@@ -1,0 +1,20 @@
+/* Core Code Innovation — design tokens (marca).
+   Fuente única de verdad de color/tipografía. Copiar a cada frontend. */
+:root {
+  /* Marca */
+  --cci-primary: #0B5FFF;      /* azul CCI */
+  --cci-primary-600: #0847C4;
+  --cci-accent: #22D3EE;       /* cian tech */
+  --cci-ink: #0A0F1E;          /* fondo oscuro */
+  --cci-surface: #111827;
+  --cci-text: #E5E7EB;
+  --cci-muted: #94A3B8;
+  --cci-success: #22C55E;
+  --cci-warn: #F59E0B;
+  --cci-danger: #EF4444;
+  /* Tipografía */
+  --cci-font-sans: "Inter", system-ui, sans-serif;
+  --cci-font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --cci-radius: 12px;
+  --cci-shadow: 0 8px 30px rgba(0,0,0,.25);
+}

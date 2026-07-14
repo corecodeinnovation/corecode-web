@@ -1,0 +1,35 @@
+<div align="center">
+
+# 🚀 corecode-web
+
+**Web corporativa de Core Code Innovation. Landing, portfolio y blog técnico.**
+
+![Tier](https://img.shields.io/badge/tier-3-flagship-0B5FFF)
+![Next.js](https://img.shields.io/badge/Next.js-15-000000)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+</div>
+
+---
+
+## Qué es
+Sitio de la empresa: servicios, portfolio (los otros repos como casos de estudio),
+sobre, blog técnico en MDX y contacto (que notifica vía ops-notify-bot). Self-hosted
+en el homelab tras Traefik, con Cloudflare delante.
+
+## Quickstart
+```bash
+cp .env.example .env.local
+npm install && npm run dev
+```
+
+## Diseño
+Usa `src/styles/tokens.css` — los design tokens de marca CCI. **No inventar colores**:
+todo sale de las variables `--cci-*`. Ver `BRAND.md` en la raíz del monorepo homelab.
+
+## Roadmap
+- [ ] Hero + servicios
+- [ ] Portfolio (casos de estudio enlazando repos)
+- [ ] Blog MDX (fuente de posts LinkedIn)
+- [ ] Formulario de contacto -> ops-notify-bot
+- [ ] Lighthouse >95, SEO, a11y
