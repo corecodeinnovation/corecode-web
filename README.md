@@ -29,7 +29,7 @@ todo sale de las variables `--cci-*`. Ver `BRAND.md` en la raíz del monorepo ho
 
 ## Roadmap
 - [x] Layout base: tokens de marca, header/footer con monograma, fuentes (Poppins/Inter/JetBrains Mono)
-- [ ] Hero + servicios
+- [x] Hero (logo cubo) + sección de servicios
 - [ ] Portfolio (casos de estudio enlazando repos)
 - [ ] Blog MDX (fuente de posts LinkedIn)
 - [ ] Formulario de contacto -> ops-notify-bot
