@@ -6,8 +6,6 @@ export function Hero() {
     <section className="border-b border-cci-line">
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:py-28">
         <div className="flex flex-col items-start gap-6">
-          <p className="font-mono text-sm text-cci-orange">{"// software a medida"}</p>
-
           <h1 className="font-display text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
             Del núcleo del código al producto terminado
           </h1>
@@ -39,10 +37,10 @@ export function Hero() {
 
         <div className="relative mx-auto w-full max-w-md lg:max-w-none">
           <Image
-            src="/brand/cci-cube.png"
-            alt="Cubo fragmentado de Core Code Innovation"
-            width={852}
-            height={760}
+            src="/brand/cci-logo-dark.png"
+            alt="Logo de Core Code Innovation: cubo fragmentado junto al wordmark"
+            width={954}
+            height={535}
             priority
             sizes="(min-width: 1024px) 40vw, 90vw"
             className="h-auto w-full"

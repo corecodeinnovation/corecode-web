@@ -47,8 +47,7 @@ export function Services() {
   return (
     <section id="servicios" aria-labelledby="servicios-titulo" className="border-b border-cci-line">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <p className="font-mono text-sm text-cci-orange">{"// servicios"}</p>
-        <h2 id="servicios-titulo" className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
+        <h2 id="servicios-titulo" className="font-display text-3xl font-semibold sm:text-4xl">
           Qué construimos
         </h2>
         <p className="mt-4 max-w-2xl text-cci-muted">

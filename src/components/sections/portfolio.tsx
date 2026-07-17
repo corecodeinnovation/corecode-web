@@ -110,8 +110,7 @@ export function Portfolio() {
   return (
     <section id="portfolio" aria-labelledby="portfolio-titulo" className="border-b border-cci-line">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <p className="font-mono text-sm text-cci-orange">{"// portfolio"}</p>
-        <h2 id="portfolio-titulo" className="mt-3 font-display text-3xl font-semibold sm:text-4xl">
+        <h2 id="portfolio-titulo" className="font-display text-3xl font-semibold sm:text-4xl">
           Un ecosistema, no proyectos sueltos
         </h2>
         <p className="mt-4 max-w-2xl text-cci-muted">
