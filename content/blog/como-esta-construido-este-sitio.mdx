@@ -1,0 +1,38 @@
+---
+title: "Cómo está construido este sitio"
+description: "Stack y decisiones detrás de corecodeinnovation.com: Next.js 15, design tokens y despliegue self-hosted en el homelab."
+date: "2026-07-17"
+tags: ["nextjs", "homelab", "devops"]
+---
+
+Este sitio es parte del portfolio técnico de Core Code Innovation, y como todo lo demás
+del ecosistema, corre self-hosted en el homelab. Estas son las decisiones principales.
+
+## Stack
+
+- **Next.js 15** con App Router y generación estática: todas las páginas se sirven
+  pre-renderizadas.
+- **Tailwind CSS** sobre un sistema de **design tokens** propio: cada color, radio y
+  sombra sale de variables `--cci-*` compartidas entre los frontends del portfolio.
+- **MDX** para este blog: los posts viven como archivos en el repositorio y se
+  compilan en build.
+
+## Dark-first
+
+El sitio no tiene modo claro. Es un portfolio técnico y la identidad de la marca es
+naranja sobre carbón, así que el modo oscuro no es un tema alternativo: es el default
+y el único.
+
+## Despliegue
+
+El sitio corre en un contenedor Docker dentro del homelab, detrás de Traefik como
+proxy interno. La salida a internet es un túnel de Cloudflare, lo que evita abrir
+puertos en el router y no expone la IP de casa.
+
+```text
+internet → Cloudflare (DNS + túnel) → Traefik → contenedor next
+```
+
+El resto de los repos del portfolio —el servicio de auth, el bot de notificaciones,
+el dashboard en tiempo real— siguen el mismo camino. Este sitio los enlaza como
+casos de estudio en la [sección de portfolio](/#portfolio).

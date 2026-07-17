@@ -35,3 +35,87 @@
     outline-offset: 2px;
   }
 }
+
+@layer components {
+  /* Prosa de artículos MDX — todo sale de los tokens de marca */
+  .prose-cci {
+    color: var(--cci-text);
+    line-height: 1.75;
+  }
+  .prose-cci > * + * {
+    margin-top: 1.25em;
+  }
+  .prose-cci h2,
+  .prose-cci h3 {
+    font-family: var(--cci-font-display);
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 2em;
+  }
+  .prose-cci h2 {
+    font-size: 1.5rem;
+  }
+  .prose-cci h3 {
+    font-size: 1.25rem;
+  }
+  .prose-cci p,
+  .prose-cci li {
+    color: var(--cci-muted);
+  }
+  .prose-cci strong {
+    color: var(--cci-text);
+  }
+  .prose-cci a {
+    color: var(--cci-orange);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-cci a:hover {
+    color: var(--cci-amber);
+  }
+  .prose-cci ul,
+  .prose-cci ol {
+    padding-left: 1.5rem;
+  }
+  .prose-cci ul {
+    list-style: disc;
+  }
+  .prose-cci ol {
+    list-style: decimal;
+  }
+  .prose-cci li + li {
+    margin-top: 0.5em;
+  }
+  .prose-cci code {
+    font-family: var(--cci-font-mono);
+    font-size: 0.875em;
+    color: var(--cci-text);
+    background: var(--cci-surface-2);
+    border: 1px solid var(--cci-line);
+    border-radius: 6px;
+    padding: 0.15em 0.4em;
+  }
+  .prose-cci pre {
+    background: var(--cci-surface);
+    border: 1px solid var(--cci-line);
+    border-radius: var(--cci-radius);
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+  }
+  .prose-cci pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--cci-text);
+  }
+  .prose-cci blockquote {
+    border-left: 3px solid var(--cci-orange);
+    padding-left: 1rem;
+    color: var(--cci-slate);
+  }
+  .prose-cci hr {
+    border: none;
+    border-top: 1px solid var(--cci-line);
+    margin: 2.5em 0;
+  }
+}
