@@ -23,7 +23,7 @@ export function Footer() {
             Blog
           </Link>
           <a
-            href="https://github.com/CoreCodeInnovations"
+            href="https://github.com/corecodeinnovation"
             target="_blank"
             rel="noopener noreferrer"
             className="text-cci-muted transition-colors hover:text-cci-text"
