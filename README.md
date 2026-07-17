@@ -4,7 +4,7 @@
 
 **Web corporativa de Core Code Innovation. Landing, portfolio y blog técnico.**
 
-![Tier](https://img.shields.io/badge/tier-3-flagship-0B5FFF)
+![Tier](https://img.shields.io/badge/tier-3_flagship-FF5A1F)
 ![Next.js](https://img.shields.io/badge/Next.js-15-000000)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -28,6 +28,7 @@ Usa `src/styles/tokens.css` — los design tokens de marca CCI. **No inventar co
 todo sale de las variables `--cci-*`. Ver `BRAND.md` en la raíz del monorepo homelab.
 
 ## Roadmap
+- [x] Layout base: tokens de marca, header/footer con monograma, fuentes (Poppins/Inter/JetBrains Mono)
 - [ ] Hero + servicios
 - [ ] Portfolio (casos de estudio enlazando repos)
 - [ ] Blog MDX (fuente de posts LinkedIn)

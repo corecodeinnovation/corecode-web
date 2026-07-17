@@ -1,10 +1,15 @@
-// corecode-web — landing (scaffolding). Usa los design tokens de marca.
+// Placeholder de la landing — el hero y las secciones llegan en la fase 2.
 export default function Home() {
   return (
-    <main style={{ fontFamily: "var(--cci-font-sans)" }}>
-      <h1>Core Code Innovation</h1>
-      <p>Web, Mobile, IA/ML, DevOps, Bots y Redes.</p>
-      {/* TODO: hero, servicios, portfolio (casos de estudio), sobre, blog, contacto */}
-    </main>
+    <section className="mx-auto flex max-w-6xl flex-col items-start gap-4 px-4 py-24 sm:px-6">
+      <p className="font-mono text-sm text-cci-orange">{"// corecode-web"}</p>
+      <h1 className="font-display text-4xl font-semibold sm:text-5xl">
+        Core Code <span className="text-cci-orange">Innovation</span>
+      </h1>
+      <p className="max-w-xl text-lg text-cci-muted">
+        Desarrollo de software a medida: web, mobile, IA/ML, DevOps, automatizaciones, bots y
+        redes.
+      </p>
+    </section>
   );
 }
