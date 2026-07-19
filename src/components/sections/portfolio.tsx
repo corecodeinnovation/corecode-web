@@ -27,7 +27,7 @@ const caseStudies: CaseStudy[] = [
     repo: "ops-notify-bot",
     area: "Bots / Automatización",
     description:
-      "Bot de Telegram que recibe webhooks del homelab — deploys, alertas, contenedores caídos — y responde comandos de estado en tiempo real.",
+      "Bot de Telegram que recibe alertas de infraestructura — deploys, incidentes, contenedores caídos — y responde comandos de estado en tiempo real.",
     stack: "Node.js · TypeScript · grammY · Express",
     github: "https://github.com/corecodeinnovation/ops-notify-bot",
   },
@@ -45,6 +45,7 @@ const caseStudies: CaseStudy[] = [
     description:
       "Procesamiento asíncrono con colas: workers escalables, reintentos con backoff, dead letter queue y ciclo de estados consultable por API.",
     stack: "NestJS · BullMQ · Redis · PostgreSQL",
+    github: "https://github.com/corecodeinnovation/taskforge",
   },
   {
     repo: "gql-core",
@@ -52,6 +53,7 @@ const caseStudies: CaseStudy[] = [
     description:
       "API GraphQL de referencia: paginación cursor-based, subscriptions en vivo, DataLoader contra N+1 y tipado end-to-end.",
     stack: "Apollo · NestJS · Prisma · GraphQL Codegen",
+    github: "https://github.com/corecodeinnovation/gql-core",
   },
   {
     repo: "core-dashboard",
@@ -113,8 +115,9 @@ export function Portfolio() {
           Un ecosistema, no proyectos sueltos
         </h2>
         <p className="mt-4 max-w-2xl text-cci-muted">
-          Los repos del homelab de CCI se conectan entre sí: la infraestructura despliega, el bot
-          alerta, el servicio de auth da identidad y el dashboard lo monitorea todo en vivo.
+          No solo lo decimos: operamos nuestra propia plataforma 24/7 con las mismas prácticas que
+          aplicamos a cada proyecto — despliegue automatizado, monitoreo en tiempo real y alertas
+          al instante. Cada pieza es código abierto que puedes revisar.
         </p>
 
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

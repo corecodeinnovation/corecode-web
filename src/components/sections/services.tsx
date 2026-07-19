@@ -51,8 +51,8 @@ export function Services() {
           Qué construimos
         </h2>
         <p className="mt-4 max-w-2xl text-cci-muted">
-          Seis áreas, un mismo estándar: código tipado, contenedores desde el día uno y entregas
-          medibles.
+          Seis áreas, un mismo estándar: entregas que puedes medir, código que otro equipo podría
+          mantener mañana, y cero cajas negras.
         </p>
 
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

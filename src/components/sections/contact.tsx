@@ -48,7 +48,7 @@ export function Contact() {
               respondemos a la brevedad.
             </p>
             <p className="mt-6 font-mono text-xs text-cci-slate">
-              El mensaje llega directo a nuestro sistema de notificaciones.
+              Respondemos normalmente dentro del mismo día.
             </p>
           </div>
 

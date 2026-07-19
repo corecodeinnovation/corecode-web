@@ -21,8 +21,8 @@ export function Hero() {
           </h1>
 
           <p className="max-w-xl text-lg leading-relaxed text-cci-muted">
-            En Core Code Innovation diseñamos y construimos software completo: aplicaciones web y
-            móviles, integraciones de IA, infraestructura DevOps, automatizaciones y redes.
+            Convertimos ideas en productos en producción: rápido de lanzar, sólido para crecer. De
+            la arquitectura al deploy, un solo equipo responsable de que funcione.
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
