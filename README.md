@@ -32,5 +32,5 @@ todo sale de las variables `--cci-*`. Ver `BRAND.md` en la raíz del monorepo ho
 - [x] Hero (logo cubo) + sección de servicios
 - [x] Portfolio (casos de estudio enlazando repos)
 - [x] Blog MDX (fuente de posts LinkedIn)
-- [ ] Formulario de contacto -> ops-notify-bot
+- [x] Formulario de contacto -> ops-notify-bot
 - [ ] Lighthouse >95, SEO, a11y
