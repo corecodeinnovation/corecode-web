@@ -75,14 +75,14 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
           )}
         </h3>
         {!study.github && (
-          <span className="shrink-0 rounded-full border border-cci-line px-2.5 py-0.5 font-mono text-[11px] text-cci-slate-600">
+          <span className="shrink-0 rounded-full border border-cci-line px-2.5 py-0.5 font-mono text-[11px] text-cci-slate">
             en desarrollo
           </span>
         )}
       </div>
       <p className="font-mono text-xs text-cci-slate">{study.area}</p>
       <p className="text-sm leading-relaxed text-cci-muted">{study.description}</p>
-      <p className="mt-auto font-mono text-xs text-cci-slate-600">{study.stack}</p>
+      <p className="mt-auto font-mono text-xs text-cci-slate">{study.stack}</p>
     </>
   );
 
@@ -95,7 +95,6 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
         href={study.github}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`${study.repo} en GitHub`}
         className={`group ${cardClasses} hover:border-cci-slate-600 hover:bg-cci-surface-2`}
       >
         {body}

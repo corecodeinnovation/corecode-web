@@ -47,7 +47,7 @@ export function Contact() {
               ¿Tienes un proyecto en mente o quieres conversar sobre una idea? Escríbenos y te
               respondemos a la brevedad.
             </p>
-            <p className="mt-6 font-mono text-xs text-cci-slate-600">
+            <p className="mt-6 font-mono text-xs text-cci-slate">
               El mensaje llega directo a nuestro sistema de notificaciones.
             </p>
           </div>

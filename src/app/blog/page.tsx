@@ -29,7 +29,7 @@ export default function BlogPage() {
                 href={`/blog/${post.slug}`}
                 className="group flex flex-col gap-2 rounded-cci border border-cci-line bg-cci-surface p-6 transition-colors hover:border-cci-slate-600 hover:bg-cci-surface-2"
               >
-                <time dateTime={post.date} className="font-mono text-xs text-cci-slate-600">
+                <time dateTime={post.date} className="font-mono text-xs text-cci-slate">
                   {formatDate(post.date)}
                 </time>
                 <h2 className="font-display text-xl font-semibold transition-colors group-hover:text-cci-orange">

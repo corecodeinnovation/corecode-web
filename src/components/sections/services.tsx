@@ -69,7 +69,7 @@ export function Services() {
               </span>
               <h3 className="font-display text-lg font-semibold">{service.title}</h3>
               <p className="text-sm leading-relaxed text-cci-muted">{service.description}</p>
-              <p className="mt-auto font-mono text-xs text-cci-slate-600">{service.stack}</p>
+              <p className="mt-auto font-mono text-xs text-cci-slate">{service.stack}</p>
             </li>
           ))}
         </ul>

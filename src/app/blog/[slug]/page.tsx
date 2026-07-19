@@ -19,6 +19,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: post.meta.title,
     description: post.meta.description,
+    openGraph: {
+      type: "article",
+      title: post.meta.title,
+      description: post.meta.description,
+      publishedTime: post.meta.date,
+    },
   };
 }
 
@@ -37,7 +43,7 @@ export default async function PostPage({ params }: Params) {
       </Link>
 
       <header className="mt-8 flex flex-col gap-3 border-b border-cci-line pb-8">
-        <time dateTime={post.meta.date} className="font-mono text-xs text-cci-slate-600">
+        <time dateTime={post.meta.date} className="font-mono text-xs text-cci-slate">
           {formatDate(post.meta.date)}
         </time>
         <h1 className="font-display text-3xl font-semibold leading-tight sm:text-4xl">

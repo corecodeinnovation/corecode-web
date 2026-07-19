@@ -35,7 +35,7 @@ export function Footer() {
 
       <div className="border-t border-cci-line">
         <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
-          <p className="font-mono text-xs text-cci-slate-600">
+          <p className="font-mono text-xs text-cci-slate">
             © {new Date().getFullYear()} Core Code Innovation
           </p>
         </div>
