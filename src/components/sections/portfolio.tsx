@@ -59,8 +59,9 @@ const caseStudies: CaseStudy[] = [
     repo: "core-dashboard",
     area: "Full-stack / Tiempo real",
     description:
-      "Panel de control del homelab con WebSockets: estado de contenedores en vivo, streaming de logs, métricas históricas y alertas.",
+      "Panel de control de infraestructura con WebSockets: estado de contenedores en vivo, streaming de logs, métricas históricas y alertas.",
     stack: "Next.js · NestJS · Socket.IO · PostgreSQL",
+    github: "https://github.com/corecodeinnovation/core-dashboard",
   },
 ];
 
