@@ -34,6 +34,12 @@ npm install && npm run dev
 
 El sitio queda en `http://localhost:3000`.
 
+## Tests
+```bash
+npm test          # unit (Jest): lib/ y la API route de contacto
+npm run test:e2e  # e2e (Playwright): build + start reales, smoke de home/blog/contacto
+```
+
 ## Arquitectura
 
 ```mermaid
@@ -54,6 +60,7 @@ todo sale de las variables `--cci-*`. Dark-first: naranja `#FF5A1F` sobre carbó
 - Lighthouse (mobile): **100** accessibility · **100** best practices · **100** SEO · 91–96 performance (LCP limitado por el hero en slow-4G simulado).
 - OG/Twitter images, JSON-LD de organización, sitemap y robots generados en build.
 - Docker multi-stage (`output: standalone`), contenedor non-root con healthcheck.
+- Tests unitarios (Jest) para la lógica del blog y la API route de contacto; e2e (Playwright) para home, blog y el formulario. CI corre ambos en cada push/PR.
 
 ## Roadmap
 - [x] Layout base: tokens de marca, header/footer con monograma, fuentes (Poppins/Inter/JetBrains Mono)
@@ -62,5 +69,6 @@ todo sale de las variables `--cci-*`. Dark-first: naranja `#FF5A1F` sobre carbó
 - [x] Blog MDX (fuente de posts LinkedIn)
 - [x] Formulario de contacto -> ops-notify-bot
 - [x] Lighthouse, SEO (OG, sitemap, JSON-LD), a11y
+- [x] Tests unitarios (Jest) y e2e (Playwright), corridos en CI
 - [ ] Página "sobre nosotros"
 - [ ] Resaltado de sintaxis en el blog (rehype-pretty-code)
