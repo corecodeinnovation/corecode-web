@@ -1,6 +1,6 @@
 {
   "name": "corecode-web",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Web corporativa de Core Code Innovation (Next.js + Tailwind).",
   "private": true,
   "scripts": {

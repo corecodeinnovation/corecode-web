@@ -4,7 +4,7 @@ Todos los cambios notables de este proyecto se documentan en este archivo.
 El formato sigue [Keep a Changelog](https://keepachangelog.com/es/1.1.0/) y el
 versionado sigue [SemVer](https://semver.org/lang/es/).
 
-## [Unreleased]
+## [1.1.0] - 2026-07-27
 
 ### Added
 - Tests unitarios (Jest + ts-jest) para `src/lib/posts.ts` y la API route de
@@ -42,5 +42,6 @@ Primera versión pública del sitio corporativo de Core Code Innovation.
   `docker compose up` en el puerto 3000.
 - CI en GitHub Actions: lint + build en cada push/PR.
 
+[1.1.0]: https://github.com/corecodeinnovation/corecode-web/releases/tag/v1.1.0
 [1.0.1]: https://github.com/corecodeinnovation/corecode-web/releases/tag/v1.0.1
 [1.0.0]: https://github.com/corecodeinnovation/corecode-web/releases/tag/v1.0.0
