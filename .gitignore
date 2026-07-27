@@ -2,3 +2,6 @@ node_modules/
 .next/
 .env*.local
 out/
+/test-results/
+/playwright-report/
+/playwright/.cache/
