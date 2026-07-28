@@ -35,6 +35,15 @@ export function Header() {
               {link.label}
             </Link>
           ))}
+          <a
+            href="https://dashboard.corecodeinnovation.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden items-center gap-1.5 rounded-cci px-3 py-2 text-sm text-cci-muted transition-colors hover:bg-cci-surface hover:text-cci-text sm:flex"
+          >
+            <span aria-hidden="true" className="h-1.5 w-1.5 animate-pulse rounded-full bg-cci-success" />
+            Dashboard en vivo
+          </a>
           <Link
             href="/#contacto"
             className="ml-2 rounded-cci bg-cci-orange px-4 py-2 text-sm font-semibold text-cci-ink transition-colors hover:bg-cci-orange-600"

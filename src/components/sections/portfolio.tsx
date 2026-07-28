@@ -4,9 +4,23 @@ type CaseStudy = {
   description: string;
   stack: string;
   github?: string;
+  demo?: string;
+  demoLabel?: string;
+  featured?: boolean;
 };
 
 const caseStudies: CaseStudy[] = [
+  {
+    repo: "core-dashboard",
+    area: "Full-stack / Tiempo real",
+    description:
+      "Panel de control de infraestructura con WebSockets: estado de contenedores en vivo, streaming de logs, métricas históricas y alertas. Sin iniciar sesión se navega como visitante de solo lectura.",
+    stack: "Next.js · NestJS · Socket.IO · PostgreSQL",
+    github: "https://github.com/corecodeinnovation/core-dashboard",
+    demo: "https://dashboard.corecodeinnovation.com",
+    demoLabel: "Ver dashboard en vivo",
+    featured: true,
+  },
   {
     repo: "homelab-infra",
     area: "DevOps / Redes",
@@ -55,29 +69,24 @@ const caseStudies: CaseStudy[] = [
     stack: "Apollo · NestJS · Prisma · GraphQL Codegen",
     github: "https://github.com/corecodeinnovation/gql-core",
   },
-  {
-    repo: "core-dashboard",
-    area: "Full-stack / Tiempo real",
-    description:
-      "Panel de control de infraestructura con WebSockets: estado de contenedores en vivo, streaming de logs, métricas históricas y alertas.",
-    stack: "Next.js · NestJS · Socket.IO · PostgreSQL",
-    github: "https://github.com/corecodeinnovation/core-dashboard",
-  },
 ];
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
-  const body = (
-    <>
+  return (
+    <div
+      className={`flex h-full flex-col gap-3 rounded-cci border bg-cci-surface p-6 transition-colors hover:bg-cci-surface-2 ${
+        study.featured ? "border-cci-orange/40 hover:border-cci-orange/60" : "border-cci-line hover:border-cci-slate-600"
+      }`}
+    >
       <div className="flex items-start justify-between gap-3">
-        <h3 className="font-mono text-base font-semibold text-cci-text">
-          {study.repo}
-          {study.github && (
-            <span aria-hidden="true" className="ml-2 text-cci-slate-600 transition-colors group-hover:text-cci-orange">
-              ↗
-            </span>
-          )}
-        </h3>
-        {!study.github && (
+        <h3 className="font-mono text-base font-semibold text-cci-text">{study.repo}</h3>
+        {study.demo && (
+          <span className="flex shrink-0 items-center gap-1.5 rounded-full border border-cci-success/30 bg-cci-success/10 px-2.5 py-0.5 font-mono text-[11px] text-cci-success">
+            <span aria-hidden="true" className="h-1.5 w-1.5 animate-pulse rounded-full bg-cci-success" />
+            en vivo
+          </span>
+        )}
+        {!study.demo && !study.github && (
           <span className="shrink-0 rounded-full border border-cci-line px-2.5 py-0.5 font-mono text-[11px] text-cci-slate">
             en desarrollo
           </span>
@@ -86,26 +95,33 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
       <p className="font-mono text-xs text-cci-slate">{study.area}</p>
       <p className="text-sm leading-relaxed text-cci-muted">{study.description}</p>
       <p className="mt-auto font-mono text-xs text-cci-slate">{study.stack}</p>
-    </>
+
+      {(study.demo || study.github) && (
+        <div className="flex flex-wrap items-center gap-2 pt-1">
+          {study.demo && (
+            <a
+              href={study.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-cci bg-cci-orange px-3 py-1.5 text-xs font-semibold text-cci-ink transition-colors hover:bg-cci-orange-600"
+            >
+              {study.demoLabel ?? "Ver en vivo"} ↗
+            </a>
+          )}
+          {study.github && (
+            <a
+              href={study.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-cci border border-cci-line px-3 py-1.5 text-xs font-semibold text-cci-muted transition-colors hover:border-cci-slate-600 hover:text-cci-text"
+            >
+              Código ↗
+            </a>
+          )}
+        </div>
+      )}
+    </div>
   );
-
-  const cardClasses =
-    "flex h-full flex-col gap-3 rounded-cci border border-cci-line bg-cci-surface p-6 transition-colors";
-
-  if (study.github) {
-    return (
-      <a
-        href={study.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`group ${cardClasses} hover:border-cci-slate-600 hover:bg-cci-surface-2`}
-      >
-        {body}
-      </a>
-    );
-  }
-
-  return <div className={cardClasses}>{body}</div>;
 }
 
 export function Portfolio() {
@@ -118,12 +134,13 @@ export function Portfolio() {
         <p className="mt-4 max-w-2xl text-cci-muted">
           No solo lo decimos: operamos nuestra propia plataforma 24/7 con las mismas prácticas que
           aplicamos a cada proyecto — despliegue automatizado, monitoreo en tiempo real y alertas
-          al instante. Cada pieza es código abierto que puedes revisar.
+          al instante. El dashboard está en vivo: puedes navegarlo como visitante ahora mismo, sin
+          pedir acceso. Cada pieza es además código abierto que puedes revisar.
         </p>
 
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {caseStudies.map((study) => (
-            <li key={study.repo}>
+            <li key={study.repo} className={study.featured ? "sm:col-span-2 lg:col-span-1" : undefined}>
               <CaseStudyCard study={study} />
             </li>
           ))}
