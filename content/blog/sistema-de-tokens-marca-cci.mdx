@@ -1,0 +1,66 @@
+---
+title: "Un sistema de tokens, no colores sueltos: la paleta CCI"
+description: "Por qué cada color, radio y sombra de los frontends de Core Code Innovation sale de un único archivo de tokens, y cómo se conecta con Tailwind."
+date: "2026-07-27"
+tags: ["design-system", "css", "tailwind"]
+---
+
+Este sitio y `core-dashboard` son proyectos separados, con repos, deploys y hasta stacks
+de backend distintos. Aun así, se ven como el mismo producto. Eso no es casualidad: los
+dos leen la paleta del mismo archivo.
+
+## Un solo archivo, una sola fuente de verdad
+
+`BRAND.tokens.css` vive en la raíz del portfolio y se copia a cada frontend. Nada de hex
+sueltos en componentes — si un color no está aquí, no se usa:
+
+```css {2,9,15}
+:root {
+  --cci-orange: #FF5A1F;       /* acento principal, CTA, "core" */
+  --cci-orange-600: #E24500;   /* hover/pressed */
+  --cci-amber: #FF8A3D;        /* highlight / segundo naranja */
+
+  --cci-slate: #8A93A0;        /* gris frío de los bloques */
+  --cci-slate-600: #5A6472;    /* pizarra oscura */
+
+  --cci-ink: #0B0B0E;          /* fondo casi negro */
+  --cci-surface: #16171B;      /* tarjetas / paneles */
+  --cci-surface-2: #1E2024;    /* elementos elevados */
+  --cci-line: #2A2D33;         /* bordes / divisores */
+
+  --cci-text: #F0F0F0;
+  --cci-muted: #9AA0A8;
+
+  --cci-radius: 12px;
+}
+```
+
+## De variables CSS a clases de Tailwind
+
+Tailwind no inventa su propia paleta encima: cada color del tema apunta de vuelta a la
+variable CSS, así que `bg-cci-orange` y `var(--cci-orange)` son literalmente el mismo
+valor, no dos definiciones que se puedan desincronizar:
+
+```ts
+colors: {
+  cci: {
+    orange: { DEFAULT: "var(--cci-orange)", 600: "var(--cci-orange-600)" },
+    slate: { DEFAULT: "var(--cci-slate)", 600: "var(--cci-slate-600)" },
+    ink: "var(--cci-ink)",
+    surface: { DEFAULT: "var(--cci-surface)", 2: "var(--cci-surface-2)" },
+    line: "var(--cci-line)",
+  },
+},
+```
+
+## La regla que lo sostiene
+
+La disciplina es simple: **un acento naranja por pantalla**, dark-first siempre, y si hace
+falta un color que no está en la lista, se agrega al archivo de tokens — nunca se escribe
+un hex nuevo dentro de un componente. No es una regla que imponga una herramienta; es una
+convención que seguimos porque ya vimos el resultado de no seguirla: dos repos que
+terminan pareciendo de marcas distintas aunque digan lo mismo en el README.
+
+Por eso las [ilustraciones del portfolio](/#portfolio) —las de `homelab-infra`,
+`cci-auth-service`, `netprobe-cli` y el resto— están armadas solo con estos mismos
+tokens, en vez de imágenes genéricas generadas sin ese criterio.

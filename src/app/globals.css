@@ -99,14 +99,24 @@
     background: var(--cci-surface);
     border: 1px solid var(--cci-line);
     border-radius: var(--cci-radius);
-    padding: 1rem 1.25rem;
+    padding: 1rem 0;
     overflow-x: auto;
   }
   .prose-cci pre code {
+    display: grid;
     background: none;
     border: none;
     padding: 0;
     color: var(--cci-text);
+    font-size: 0.875em;
+  }
+  .prose-cci pre [data-line] {
+    padding: 0 1.25rem;
+    border-left: 2px solid transparent;
+  }
+  .prose-cci pre [data-highlighted-line] {
+    background: rgba(255, 90, 31, 0.12);
+    border-left-color: var(--cci-orange);
   }
   .prose-cci blockquote {
     border-left: 3px solid var(--cci-orange);

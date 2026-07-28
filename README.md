@@ -71,4 +71,4 @@ todo sale de las variables `--cci-*`. Dark-first: naranja `#FF5A1F` sobre carbó
 - [x] Lighthouse, SEO (OG, sitemap, JSON-LD), a11y
 - [x] Tests unitarios (Jest) y e2e (Playwright), corridos en CI
 - [x] Página "sobre nosotros"
-- [ ] Resaltado de sintaxis en el blog (rehype-pretty-code)
+- [x] Resaltado de sintaxis en el blog (rehype-pretty-code)

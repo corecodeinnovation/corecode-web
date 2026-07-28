@@ -2,7 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
+import type { PluggableList } from "unified";
 import { formatDate, getAllPosts, getPost } from "@/lib/posts";
+
+const rehypePlugins: PluggableList = [
+  [rehypePrettyCode, { theme: "one-dark-pro", keepBackground: false }],
+];
+
+const mdxOptions = { rehypePlugins };
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -57,7 +65,7 @@ export default async function PostPage({ params }: Params) {
       </header>
 
       <div className="prose-cci mt-8">
-        <MDXRemote source={post.content} />
+        <MDXRemote source={post.content} options={{ mdxOptions }} />
       </div>
     </article>
   );
