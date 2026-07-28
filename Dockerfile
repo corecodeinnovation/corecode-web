@@ -9,7 +9,13 @@ FROM node:22-alpine AS build
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-ENV NEXT_TELEMETRY_DISABLED=1
+# Públicas por diseño (se inlinean en el JS del cliente), pero no se versionan:
+# se pasan como --build-arg para no atar el repo a una cuenta de analítica concreta.
+ARG NEXT_PUBLIC_UMAMI_SRC
+ARG NEXT_PUBLIC_UMAMI_WEBSITE_ID
+ENV NEXT_PUBLIC_UMAMI_SRC=$NEXT_PUBLIC_UMAMI_SRC \
+    NEXT_PUBLIC_UMAMI_WEBSITE_ID=$NEXT_PUBLIC_UMAMI_WEBSITE_ID \
+    NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
 # Etapa 3: runtime mínimo (output standalone), non-root
