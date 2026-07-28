@@ -22,6 +22,9 @@ export function Footer() {
           <Link href="/blog" className="text-cci-muted transition-colors hover:text-cci-text">
             Blog
           </Link>
+          <Link href="/sobre-nosotros" className="text-cci-muted transition-colors hover:text-cci-text">
+            Nosotros
+          </Link>
           <a
             href="https://dashboard.corecodeinnovation.com"
             target="_blank"

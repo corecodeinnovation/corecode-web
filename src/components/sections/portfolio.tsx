@@ -7,7 +7,13 @@ type CaseStudy = {
   demo?: string;
   demoLabel?: string;
   featured?: boolean;
+  screenshot?: string;
+  screenshotSrcSet?: string;
+  screenshotAlt?: string;
 };
+
+const DASHBOARD_SCREENSHOT_SRCSET =
+  "/portfolio/core-dashboard-640.webp 640w, /portfolio/core-dashboard.webp 1200w";
 
 const caseStudies: CaseStudy[] = [
   {
@@ -20,6 +26,10 @@ const caseStudies: CaseStudy[] = [
     demo: "https://dashboard.corecodeinnovation.com",
     demoLabel: "Ver dashboard en vivo",
     featured: true,
+    screenshot: "/portfolio/core-dashboard.webp",
+    screenshotSrcSet: DASHBOARD_SCREENSHOT_SRCSET,
+    screenshotAlt:
+      "Captura en vivo de Core Dashboard: grid de 33 servicios del homelab con su estado de salud en tiempo real",
   },
   {
     repo: "homelab-infra",
@@ -28,6 +38,8 @@ const caseStudies: CaseStudy[] = [
       "Infraestructura como código del homelab: Traefik con TLS, monitoreo con Prometheus y Grafana, VPN WireGuard y stacks segmentados por servicio.",
     stack: "Docker Compose · Traefik · Prometheus · Grafana",
     github: "https://github.com/corecodeinnovation/homelab-infra",
+    screenshot: "/portfolio/homelab-infra.svg",
+    screenshotAlt: "Ilustración: grid de nodos de infraestructura monitoreados con un nodo destacado",
   },
   {
     repo: "cci-auth-service",
@@ -36,6 +48,8 @@ const caseStudies: CaseStudy[] = [
       "Servicio de identidad reutilizable: JWT con refresh tokens, verificación de email, roles y rate limiting. Da autenticación al resto del ecosistema.",
     stack: "NestJS · PostgreSQL · Prisma · Redis",
     github: "https://github.com/corecodeinnovation/cci-auth-service",
+    screenshot: "/portfolio/cci-auth-service.svg",
+    screenshotAlt: "Ilustración: escudo con cerradura, símbolo de autenticación y seguridad",
   },
   {
     repo: "ops-notify-bot",
@@ -44,6 +58,8 @@ const caseStudies: CaseStudy[] = [
       "Bot de Telegram que recibe alertas de infraestructura — deploys, incidentes, contenedores caídos — y responde comandos de estado en tiempo real.",
     stack: "Node.js · TypeScript · grammY · Express",
     github: "https://github.com/corecodeinnovation/ops-notify-bot",
+    screenshot: "/portfolio/ops-notify-bot.svg",
+    screenshotAlt: "Ilustración: burbuja de chat con una notificación de alerta",
   },
   {
     repo: "netprobe-cli",
@@ -52,6 +68,8 @@ const caseStudies: CaseStudy[] = [
       "Toolkit de diagnóstico de red por línea de comandos: port scanner, ping sweep de subredes, DNS lookup y export a JSON/CSV.",
     stack: "Python · Typer · Rich · pytest",
     github: "https://github.com/corecodeinnovation/netprobe-cli",
+    screenshot: "/portfolio/netprobe-cli.svg",
+    screenshotAlt: "Ilustración: radar de barrido de red tipo ping sweep",
   },
   {
     repo: "taskforge",
@@ -60,6 +78,8 @@ const caseStudies: CaseStudy[] = [
       "Procesamiento asíncrono con colas: workers escalables, reintentos con backoff, dead letter queue y ciclo de estados consultable por API.",
     stack: "NestJS · BullMQ · Redis · PostgreSQL",
     github: "https://github.com/corecodeinnovation/taskforge",
+    screenshot: "/portfolio/taskforge.svg",
+    screenshotAlt: "Ilustración: cola de trabajos repartida entre varios workers",
   },
   {
     repo: "gql-core",
@@ -68,16 +88,31 @@ const caseStudies: CaseStudy[] = [
       "API GraphQL de referencia: paginación cursor-based, subscriptions en vivo, DataLoader contra N+1 y tipado end-to-end.",
     stack: "Apollo · NestJS · Prisma · GraphQL Codegen",
     github: "https://github.com/corecodeinnovation/gql-core",
+    screenshot: "/portfolio/gql-core.svg",
+    screenshotAlt: "Ilustración: grafo de nodos conectados representando un esquema GraphQL",
   },
 ];
 
 function CaseStudyCard({ study }: { study: CaseStudy }) {
   return (
     <div
-      className={`flex h-full flex-col gap-3 rounded-cci border bg-cci-surface p-6 transition-colors hover:bg-cci-surface-2 ${
+      className={`flex h-full flex-col gap-3 overflow-hidden rounded-cci border bg-cci-surface p-6 transition-colors hover:bg-cci-surface-2 ${
         study.featured ? "border-cci-orange/40 hover:border-cci-orange/60" : "border-cci-line hover:border-cci-slate-600"
       }`}
     >
+      {study.screenshot && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={study.screenshot}
+          srcSet={study.screenshotSrcSet}
+          sizes={study.screenshotSrcSet ? "(min-width: 1024px) 380px, 100vw" : undefined}
+          alt={study.screenshotAlt ?? ""}
+          width={1200}
+          height={480}
+          loading="lazy"
+          className="-mx-6 -mt-6 h-auto w-[calc(100%+3rem)] max-w-none border-b border-cci-line"
+        />
+      )}
       <div className="flex items-start justify-between gap-3">
         <h3 className="font-mono text-base font-semibold text-cci-text">{study.repo}</h3>
         {study.demo && (

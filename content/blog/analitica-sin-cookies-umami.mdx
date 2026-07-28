@@ -1,0 +1,72 @@
+---
+title: "Analítica sin cookies: cómo medimos visitas sin banner de consentimiento"
+description: "Por qué elegimos Umami para este sitio, cómo se activa solo si hay credenciales, y cómo evitamos atar el repo a una cuenta de analítica concreta."
+date: "2026-07-27"
+tags: ["analytics", "privacy", "nextjs"]
+---
+
+Después de promover el link al [dashboard en vivo](/#portfolio) en la portada, quisimos
+saber si alguien realmente le hace clic. Pero no queríamos resolver eso a costa de meterle
+un banner de cookies a un sitio de portfolio.
+
+## Por qué Umami
+
+Google Analytics identifica visitantes con cookies persistentes, lo que obliga a pedir
+consentimiento bajo RGPD/LOPD. Umami no usa cookies ni guarda datos personales — cuenta
+visitas y rutas de forma agregada, es open source, y se puede correr self-hosted o en su
+nube gratuita. Para un sitio que ya es dark-first y sin fricciones, encajaba mejor que
+arrastrar un banner solo para justificar un contador de visitas.
+
+## Se activa solo si existen las credenciales
+
+El script no se inyecta si faltan las variables — así el mismo build sirve para local,
+staging o quien clone el repo sin analítica configurada:
+
+```tsx {6-8}
+const umamiSrc = process.env.NEXT_PUBLIC_UMAMI_SRC;
+const umamiWebsiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
+
+// ...dentro del layout:
+{umamiSrc && umamiWebsiteId && (
+  <Script src={umamiSrc} data-website-id={umamiWebsiteId} strategy="afterInteractive" />
+)}
+```
+
+## El ID no vive en el repo
+
+El `website-id` de Umami no es un secreto — viaja igual en el JS que le llega al navegador
+de cualquier visitante. Pero tampoco queríamos comprometernos a atar el repositorio público
+a una cuenta de analítica concreta con un archivo versionado. La solución fue tratar esas
+dos variables como argumentos de build de Docker, no como archivo de configuración:
+
+```dockerfile
+ARG NEXT_PUBLIC_UMAMI_SRC
+ARG NEXT_PUBLIC_UMAMI_WEBSITE_ID
+ENV NEXT_PUBLIC_UMAMI_SRC=$NEXT_PUBLIC_UMAMI_SRC \
+    NEXT_PUBLIC_UMAMI_WEBSITE_ID=$NEXT_PUBLIC_UMAMI_WEBSITE_ID
+RUN npm run build
+```
+
+Y `docker-compose.yml` los resuelve contra un `.env` local (sin sufijo, distinto del
+`.env.local` que usa Next.js) que Docker Compose carga automáticamente y que nunca se
+versiona:
+
+```yaml {4-6}
+services:
+  web:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_UMAMI_SRC: ${NEXT_PUBLIC_UMAMI_SRC:-}
+        NEXT_PUBLIC_UMAMI_WEBSITE_ID: ${NEXT_PUBLIC_UMAMI_WEBSITE_ID:-}
+```
+
+Así, cualquiera que clone `corecode-web` puede construir la imagen sin heredar nuestra
+cuenta de Umami, y nosotros no tenemos que acordarnos de "no commitear ese archivo" cada
+vez que tocamos el build.
+
+## Lo que sí hay que saber
+
+Las visitas solo cuentan desde el momento del deploy — no hay datos retroactivos. Si vas a
+medir el impacto de un cambio (como el link al dashboard), el punto de partida es el día
+que el script quedó activo en producción, no antes.

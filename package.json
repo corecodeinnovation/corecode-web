@@ -16,7 +16,9 @@
     "next": "^15.3.0",
     "next-mdx-remote": "^6.0.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "rehype-pretty-code": "^0.14.5",
+    "shiki": "^4.3.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.62.0",
@@ -39,7 +41,11 @@
     "rootDir": "src",
     "clearMocks": true,
     "testRegex": "(lib|app/api)/.*\\.spec\\.ts$",
-    "moduleFileExtensions": ["js", "json", "ts"],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
     "transform": {
       "^.+\\.ts$": [
         "ts-jest",
@@ -49,7 +55,10 @@
             "moduleResolution": "node",
             "strict": true,
             "esModuleInterop": true,
-            "types": ["jest", "node"]
+            "types": [
+              "jest",
+              "node"
+            ]
           }
         }
       ]
