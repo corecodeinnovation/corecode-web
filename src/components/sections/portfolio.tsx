@@ -7,7 +7,12 @@ type CaseStudy = {
   demo?: string;
   demoLabel?: string;
   featured?: boolean;
+  screenshot?: string;
+  screenshotAlt?: string;
 };
+
+const DASHBOARD_SCREENSHOT_SRCSET =
+  "/portfolio/core-dashboard-640.webp 640w, /portfolio/core-dashboard.webp 1200w";
 
 const caseStudies: CaseStudy[] = [
   {
@@ -20,6 +25,9 @@ const caseStudies: CaseStudy[] = [
     demo: "https://dashboard.corecodeinnovation.com",
     demoLabel: "Ver dashboard en vivo",
     featured: true,
+    screenshot: "/portfolio/core-dashboard.webp",
+    screenshotAlt:
+      "Captura en vivo de Core Dashboard: grid de 33 servicios del homelab con su estado de salud en tiempo real",
   },
   {
     repo: "homelab-infra",
@@ -74,10 +82,23 @@ const caseStudies: CaseStudy[] = [
 function CaseStudyCard({ study }: { study: CaseStudy }) {
   return (
     <div
-      className={`flex h-full flex-col gap-3 rounded-cci border bg-cci-surface p-6 transition-colors hover:bg-cci-surface-2 ${
+      className={`flex h-full flex-col gap-3 overflow-hidden rounded-cci border bg-cci-surface p-6 transition-colors hover:bg-cci-surface-2 ${
         study.featured ? "border-cci-orange/40 hover:border-cci-orange/60" : "border-cci-line hover:border-cci-slate-600"
       }`}
     >
+      {study.screenshot && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={study.screenshot}
+          srcSet={DASHBOARD_SCREENSHOT_SRCSET}
+          sizes="(min-width: 1024px) 380px, 100vw"
+          alt={study.screenshotAlt ?? ""}
+          width={1200}
+          height={480}
+          loading="lazy"
+          className="-mx-6 -mt-6 h-auto w-[calc(100%+3rem)] max-w-none border-b border-cci-line"
+        />
+      )}
       <div className="flex items-start justify-between gap-3">
         <h3 className="font-mono text-base font-semibold text-cci-text">{study.repo}</h3>
         {study.demo && (
